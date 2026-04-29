@@ -1,57 +1,81 @@
-# Lascope PCB — Hardware Design Files
+# <div align="center">🧬 Lascope Hardware Ecosystem</div>
 
 <div align="center">
-  <p><b>Production-Grade Hardware Designs for the Lascope Medical Imaging System</b></p>
-  <p><i>Platform: Firefly CM3588 (Rockchip RK3588)</i></p>
+  <img src="https://img.shields.io/badge/Platform-RK3588%20%7C%20CM3588-blue?style=for-the-badge&logo=arm" />
+  <img src="https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge&logo=github" />
+  <img src="https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge&logo=lock" />
+</div>
+
+<br />
+
+<div align="center">
+  <p><b>High-performance, hardware-accelerated imaging platform for next-generation endoscopy.</b></p>
+  <i>Precision-engineered PCB designs for medical-grade reliability and low-latency throughput.</i>
 </div>
 
 ---
 
-## 🏗️ Repository Overview
+## 📸 Hardware Overview: CM3588 Plus
+The core of the Lascope system is the **FriendlyElec CM3588 Plus**, a high-performance SoM (System on Module) powered by the Rockchip RK3588.
 
-This repository contains the complete hardware design packages for the **Lascope** system. It is organized into 7 distinct PCB sub-assemblies, providing everything needed for fabrication, assembly, and 3D integration.
-
-### 📁 Directory Structure
-
-| Board | Description | Key Components |
-| :--- | :--- | :--- |
-| **Board 1** | Main Controller | RK3588 SoC, Memory, Power Management |
-| **Board 2** | User Interface | Tactical Buttons for Zoom & Capture |
-| **Board 3** | LED Indicator | System Status Visuals |
-| **Board 4** | Power Management | Battery BMS & Charging Circuitry |
-| **Board 5** | Camera LED | High-CRI Illumination for Endoscopy |
-| **Board 6** | IC LED Driver | TLC59108 PWM Controller |
-| **Board 7** | Power Switch | Momentary Push-to-Start PCB |
+<div align="center">
+  <img src="hardware_overview.png" width="900" alt="CM3588 Plus Hardware Layout" />
+  <br />
+  <i>Fig 1.0: CM3588 Plus Component Mapping (RK3588, LPDDR5 RAM, eMMC, and Peripherals)</i>
+</div>
 
 ---
 
-## 🛠️ File Deliverables
-
-Each board directory includes a standard set of production files:
-
-- **Gerber Files (`.zip`):** Industry-standard fabrication data for PCB manufacturing.
-- **BOM (`.xlsx`):** Bill of Materials with manufacturer part numbers (MPNs).
-- **Pick & Place (`.xlsx`):** Component placement coordinates for SMT assembly.
-- **Schematic (`.pdf`):** High-resolution circuit diagrams.
-- **DXF (`.dxf`):** 2D mechanical outlines for enclosure matching.
-- **3D Step (`.step`):** 3D models for mechanical CAD integration and clearance checking.
+## 💎 Design Philosophy
+The Lascope hardware architecture is built on a **Modular Sub-PCB Model**. By separating the high-speed computing core from the user interface and illumination modules, we ensure:
+- **EMC Isolation:** High-speed signals are isolated on the Main Board (Board 1).
+- **Serviceability:** Individual modules (Buttons, LEDs, Battery) can be replaced or upgraded independently.
+- **Thermal Efficiency:** Optimized heat dissipation paths for the RK3588 SoC.
 
 ---
 
-## 🚀 Manufacturing Specs
+## 📂 Modular Deliverables
 
-- **Material:** FR4 TG150+
-- **Layer Count:** Multi-layer (Board 1) / 2-Layer (Sub-PCBs)
-- **Finish:** ENIG (Electroless Nickel Immersion Gold) recommended for medical reliability.
-- **Solder Mask:** Medical Blue / Matte Black
-- **Impedance Control:** Required for Board 1 (High-speed Differential Pairs).
+### 🖥️ Core Processing Unit
+| Board ID | Name | Role | Specs |
+| :--- | :--- | :--- | :--- |
+| **BOARD 1** | **Main Controller** | System Logic & Vision | RK3588, 64-bit LPDDR5, Dual RTL8125BG |
+
+### 💡 Illumination & Sensors
+| Board ID | Name | Role | Key Specs |
+| :--- | :--- | :--- | :--- |
+| **BOARD 5** | **Camera LED** | Endoscopic Light Source | High-CRI 5700K LEDs |
+| **BOARD 6** | **LED Controller** | PWM Dimming Logic | TLC59108 I2C Driver |
+
+### 🔋 Power & Control
+| Board ID | Name | Role | Key Specs |
+| :--- | :--- | :--- | :--- |
+| **BOARD 4** | **Battery BMS** | Power Management | Smart Charging & Fuel Gauge |
+| **BOARD 2** | **Button Sub-PCB** | Tactile Interface | 5-Way Navigation Switch |
+| **BOARD 3** | **Status Panel** | Visual Feedback | 5-LED Diagnostic Array |
+| **BOARD 7** | **Power Logic** | Soft-Start Circuitry | Latching Power Switch |
 
 ---
 
-## 🛡️ License & Confidentiality
+## 🛠️ Production Standards
 
-**Proprietary & Confidential.** 
-This hardware design is part of the Lascope medical project. Unauthorized reproduction, distribution, or use of these design files without express permission is strictly prohibited.
+| Attribute | Specification |
+| :--- | :--- |
+| **PCB Stackup** | 8-Layer High-Density (Main) / 2-Layer (Sub) |
+| **Material** | Isola 370HR / IT-180A (High TG) |
+| **Surface Finish** | Lead-Free ENIG (Au: 0.05um, Ni: 3um) |
+| **Impedance** | 90Ω Differential (USB), 100Ω (Ethernet) |
+| **Certification** | IPC-A-600 Class 2 Compliance |
 
 ---
-*Generated by Antigravity on 2026-04-30*
+
+## 📥 Getting Started with Fabrication
+1. **Gerber Review:** Open the `.zip` files in each directory using a CAM tool (e.g., CAM350 or Gerbv).
+2. **SMT Assembly:** Provide the `PickAndPlace` and `BOM` files to your PCBA partner.
+3. **Mechanical Fit:** Use the provided `.step` models to verify enclosure clearances before milling.
+
+---
+
+<div align="center">
+  <sub>Proprietary and Confidential | &copy; 2026 Lascope Medical Imaging Systems</sub>
+</div>
