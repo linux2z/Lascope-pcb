@@ -19,7 +19,7 @@
 The core of the Lascope system is the **FriendlyElec CM3588 Plus**, a high-performance SoM (System on Module) powered by the Rockchip RK3588.
 
 <div align="center">
-  <img src="https://raw.githubusercontent.com/linux2z/Lascope-pcb/main/hardware_overview.png" width="900" alt="CM3588 Plus Hardware Layout" />
+  <img src="https://raw.githubusercontent.com/linux2z/Lascope-pcb/main/hardware_overview.jpg" width="900" alt="CM3588 Plus Hardware Layout" />
   <br />
   <i>Fig 1.0: CM3588 Plus Component Mapping (RK3588, LPDDR5 RAM, eMMC, and Peripherals)</i>
 </div>
